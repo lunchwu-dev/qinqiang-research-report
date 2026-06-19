@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>八百里秦川三千万子民：秦腔深度研究报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #8B0000;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #8B0000;
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            color: #B22222;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-left: 5px solid #B22222;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #CD5C5C;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-indent: 2em;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .image-caption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 40px 0;
+        }
+        
+        ul, ol {
+            margin-left: 40px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        a {
+            color: #8B0000;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .error {
+            color: #ff0000;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="content">
+        <div class="loading">正在加载报告内容...</div>
+    </div>
+
+    <script>
+        // 秦腔相关图片URL（从百度百科等开放资源获取）
+        const images = [
+            "https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/0ef21124570f6700c9955978?fr=lemma&fromModule=lemma_content-image",
+            "https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/95afee1ff9b193c6e1fe0b69?fr=lemma&fromModule=lemma_content-image",
+            "https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/3b6833f55dec5f7bbc3109d6?fr=lemma&fromModule=lemma_content-image",
+            "https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/5327ce160285152b962b4371?fr=lemma&fromModule=lemma_content-image",
+            "https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/7aad4ae7700a0965b8382003?fr=lemma&fromModule=lemma_content-image",
+            "https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/d8b8c92af2c98c09d42af192?fr=lemma&fromModule=lemma_content-image"
+        ];
+        
+        // 简单的Markdown到HTML转换器
+        function markdownToHtml(md) {
+            let html = md;
+            
+            // 替换标题
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            
+            // 替换分隔线
+            html = html.replace(/^---$/gm, '<hr>');
+            
+            // 替换粗体
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            
+            // 替换列表项
+            html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+            html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+            
+            // 替换链接
+            html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>');
+            
+            // 段落处理
+            const paragraphs = html.split('\n\n');
+            let result = [];
+            let imgIndex = 0;
+            
+            for (let i = 0; i < paragraphs.length; i++) {
+                let para = paragraphs[i].trim();
+                if (!para) continue;
+                
+                // 如果不是标题、列表、分隔线，则包裹为<p>
+                if (!para.match(/^<(h[1-4]|li|hr|ul|ol)/)) {
+                    para = '<p>' + para + '</p>';
+                }
+                
+                // 每5个段落插入一张图片
+                if (imgIndex < images.length && i % 5 === 0) {
+                    const imgHtml = `
+                        <div class="image-container">
+                            <img src="${images[imgIndex]}" alt="秦腔艺术图片" onerror="this.style.display='none'">
+                            <div class="image-caption">秦腔艺术（图片来源：百度百科）</div>
+                        </div>
+                    `;
+                    result.push(imgHtml);
+                    imgIndex++;
+                }
+                
+                result.push(para);
+            }
+            
+            return result.join('\n');
+        }
+        
+        // 加载Markdown文件
+        async function loadMarkdown() {
+            try {
+                const response = await fetch('秦腔深度研究报告_最终版.md');
+                if (!response.ok) {
+                    throw new Error('无法加载Markdown文件');
+                }
+                const mdText = await response.text();
+                const htmlContent = markdownToHtml(mdText);
+                document.getElementById('content').innerHTML = htmlContent;
+            } catch (error) {
+                console.error('加载失败:', error);
+                document.getElementById('content').innerHTML = `
+                    <div class="error">
+                        <h2>加载失败</h2>
+                        <p>无法加载Markdown文件。请确保：</p>
+                        <ul>
+                            <li>文件 "秦腔深度研究报告_最终版.md" 存在于同一目录下</li>
+                            <li>通过Web服务器访问此页面（不要直接打开本地HTML文件）</li>
+                        </ul>
+                        <p>错误信息：${error.message}</p>
+                        <hr>
+                        <p>您也可以<a href="秦腔深度研究报告_最终版.md" download>下载Markdown文件</a>手动查看。</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadMarkdown);
+    </script>
+</body>
+</html>
