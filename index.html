@@ -5,16 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>八百里秦川三千万子民：秦腔深度研究报告</title>
     <style>
-        /* ===== 中国风配色方案 ===== */
-        :root {
-            --china-red: #C41E3A;        /* 中国红 */
-            --china-gold: #D4A843;       /* 金色 */
-            --china-dark: #1a1a1a;       /* 墨色 */
-            --china-light: #F5F0E8;      /* 宣纸色 */
-            --china-blue: #2C5F8A;       /* 青花蓝 */
-            --china-green: #5B8C5A;      /* 翠绿 */
-        }
-        
         * {
             margin: 0;
             padding: 0;
@@ -23,113 +13,88 @@
         
         body {
             font-family: "SimSun", "STSong", "Microsoft YaHei", serif;
-            background-color: var(--china-light);
-            color: var(--china-dark);
+            background-color: #F5F0E8;
+            color: #1a1a1a;
             line-height: 1.8;
-            /* 宣纸纹理背景 */
             background-image: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(139, 69, 19, 0.03) 2px,
-                    rgba(139, 69, 19, 0.03) 4px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(139, 69, 19, 0.03) 2px,
-                    rgba(139, 69, 19, 0.03) 4px
-                );
-        }
-        
-        /* ===== 容器 ===== */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        /* ===== 首页样式 ===== */
-        #home-page {
-            text-align: center;
-            padding: 40px 20px;
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,69,19,0.03) 2px, rgba(139,69,19,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139,69,19,0.03) 2px, rgba(139,69,19,0.03) 4px);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            position: relative;
         }
         
-        /* 中国风装饰边框 */
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 40px auto;
+        }
+        
         .china-border {
-            border: 3px double var(--china-red);
-            padding: 40px;
+            border: 3px double #C41E3A;
+            padding: 60px 40px;
             position: relative;
             background: linear-gradient(135deg, #FFF8F0 0%, #F5F0E8 100%);
-            box-shadow: 0 0 30px rgba(196, 30, 58, 0.2);
+            box-shadow: 0 0 30px rgba(196,30,58,0.2);
+            text-align: center;
         }
         
         .china-border::before,
         .china-border::after {
-            content: '❋';
+            content: '\276D';
             position: absolute;
-            color: var(--china-gold);
+            color: #D4A843;
             font-size: 24px;
-            background: var(--china-light);
+            background: #F5F0E8;
             padding: 0 10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .china-border::before {
             top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
         }
         
         .china-border::after {
             bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+            content: '\276C';
         }
         
-        /* 标题样式 */
         .main-title {
             font-size: 3em;
-            color: var(--china-red);
+            color: #C41E3A;
             margin-bottom: 20px;
             font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .main-title::before,
-        .main-title::after {
-            content: '】';
-            color: var(--china-gold);
-            font-size: 0.8em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         .main-title::before {
-            content: '【';
+            content: '\3010';
+            color: #D4A843;
+            font-size: 0.8em;
+        }
+        
+        .main-title::after {
+            content: '\3011';
+            color: #D4A843;
+            font-size: 0.8em;
         }
         
         .subtitle {
             font-size: 1.5em;
-            color: var(--china-blue);
+            color: #2C5F8A;
             margin-bottom: 40px;
             font-style: italic;
         }
         
-        /* 封面图占位符 */
         .cover-image {
             width: 100%;
             max-width: 600px;
             height: 400px;
             margin: 30px auto;
-            background: linear-gradient(135deg, var(--china-red) 0%, var(--china-blue) 100%);
-            border: 5px solid var(--china-gold);
+            background: linear-gradient(135deg, #C41E3A 0%, #2C5F8A 100%);
+            border: 5px solid #D4A843;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -139,9 +104,9 @@
         }
         
         .cover-image::before {
-            content: '秦';
+            content: '\79E6';
             font-size: 200px;
-            color: rgba(255, 255, 255, 0.2);
+            color: rgba(255,255,255,0.2);
             position: absolute;
             font-weight: bold;
         }
@@ -150,225 +115,91 @@
             color: white;
             font-size: 2em;
             z-index: 1;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            text-align: center;
+            line-height: 1.5;
         }
         
-        /* 目录样式 */
         .table-of-contents {
             text-align: left;
             max-width: 600px;
             margin: 40px auto;
             padding: 30px;
             background: white;
-            border: 2px solid var(--china-gold);
+            border: 2px solid #D4A843;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
         .table-of-contents h2 {
-            color: var(--china-red);
+            color: #C41E3A;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-size: 1.8em;
-            border-bottom: 2px solid var(--china-gold);
+            border-bottom: 2px solid #D4A843;
             padding-bottom: 10px;
         }
         
         .table-of-contents ol {
             list-style: none;
             counter-reset: chapter;
+            padding: 0;
         }
         
         .table-of-contents li {
             counter-increment: chapter;
             margin: 15px 0;
-            padding: 10px 15px;
+            padding: 12px 20px;
             background: #FFF8F0;
-            border-left: 4px solid var(--china-red);
+            border-left: 4px solid #C41E3A;
             transition: all 0.3s;
-            cursor: pointer;
         }
         
         .table-of-contents li:hover {
-            background: var(--china-red);
+            background: #C41E3A;
             color: white;
             transform: translateX(5px);
         }
         
         .table-of-contents li::before {
             content: counter(chapter) '. ';
-            color: var(--china-red);
+            color: #C41E3A;
             font-weight: bold;
-            margin-right: 8px;
+            margin-right: 10px;
+            font-size: 1.1em;
         }
         
         .table-of-contents li:hover::before {
-            color: var(--china-gold);
+            color: #D4A843;
         }
         
-        /* ===== 章节页面样式 ===== */
-        .chapter-page {
-            display: none;
-            padding: 40px 20px;
-            animation: fadeIn 0.5s;
+        .table-of-contents li a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .chapter-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 3px double var(--china-red);
-        }
-        
-        .chapter-header h1 {
-            color: var(--china-red);
-            font-size: 2.2em;
-            margin-bottom: 10px;
-        }
-        
-        .chapter-header .chapter-subtitle {
-            color: var(--china-blue);
-            font-size: 1.2em;
-            font-style: italic;
-        }
-        
-        /* 内容区域 */
-        .chapter-content {
-            font-size: 1.1em;
-            line-height: 2;
-        }
-        
-        .chapter-content h2 {
-            color: var(--china-red);
+        .start-button {
+            display: inline-block;
             margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-left: 5px solid var(--china-gold);
-            padding-left: 15px;
-        }
-        
-        .chapter-content h3 {
-            color: var(--china-blue);
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-        }
-        
-        .chapter-content p {
-            margin-bottom: 20px;
-            text-indent: 2em;
-            text-align: justify;
-        }
-        
-        /* 图文混排 */
-        .image-text-wrap {
-            display: flex;
-            gap: 30px;
-            margin: 30px 0;
-            align-items: flex-start;
-        }
-        
-        .image-text-wrap.image-left {
-            flex-direction: row;
-        }
-        
-        .image-text-wrap.image-right {
-            flex-direction: row-reverse;
-        }
-        
-        .image-container {
-            flex: 0 0 300px;
-            text-align: center;
-        }
-        
-        .image-container img {
-            width: 100%;
-            height: auto;
-            border: 3px solid var(--china-gold);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        
-        .image-caption {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 10px;
-            font-style: italic;
-        }
-        
-        .text-content {
-            flex: 1;
-        }
-        
-        /* 引用块 */
-        .chapter-content blockquote {
-            border-left: 5px solid var(--china-red);
-            padding: 15px 20px;
-            margin: 20px 0;
-            background: #FFF8F0;
-            font-style: italic;
-            color: #555;
-        }
-        
-        /* 列表 */
-        .chapter-content ul,
-        .chapter-content ol {
-            margin-left: 40px;
-            margin-bottom: 20px;
-        }
-        
-        .chapter-content li {
-            margin-bottom: 10px;
-        }
-        
-        /* ===== 导航按钮 ===== */
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 2px solid var(--china-gold);
-        }
-        
-        .nav-btn {
-            padding: 12px 30px;
-            background: var(--china-red);
+            padding: 15px 50px;
+            background: #C41E3A;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.1em;
+            font-size: 1.3em;
             cursor: pointer;
             transition: all 0.3s;
             font-family: "SimSun", serif;
+            text-decoration: none;
         }
         
-        .nav-btn:hover {
-            background: var(--china-blue);
+        .start-button:hover {
+            background: #2C5F8A;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         
-        .nav-btn.home {
-            background: var(--china-gold);
-            color: var(--china-dark);
-        }
-        
-        .nav-btn.home:hover {
-            background: var(--china-red);
-            color: white;
-        }
-        
-        .nav-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        
-        /* ===== 响应式设计 ===== */
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2em;
@@ -378,374 +209,45 @@
                 font-size: 1.2em;
             }
             
-            .image-text-wrap {
-                flex-direction: column !important;
+            .china-border {
+                padding: 40px 20px;
             }
             
-            .image-container {
-                flex: 0 0 auto;
-                width: 100%;
+            .cover-image {
+                height: 300px;
             }
             
-            .nav-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .nav-btn {
-                width: 100%;
-            }
-        }
-        
-        /* ===== 打印样式 ===== */
-        @media print {
-            .nav-buttons {
-                display: none;
-            }
-            
-            body {
-                background: white;
+            .cover-image-text {
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 首页 -->
-        <div id="home-page" class="chapter-page" style="display: block;">
-            <div class="china-border">
-                <h1 class="main-title">八百里秦川三千万子民</h1>
-                <p class="subtitle">秦腔深度研究报告</p>
-                
-                <div class="cover-image">
-                    <div class="cover-image-text">聆听千古秦腔<br>感悟华夏根脉</div>
-                </div>
-                
-                <div class="table-of-contents">
-                    <h2>📋 报告目录</h2>
-                    <ol>
-                        <li onclick="showChapter('chapter-0')">序章：从《主角》说开去</li>
-                        <li onclick="showChapter('chapter-1')">第一章：千年文脉——秦腔的历史长河</li>
-                        <li onclick="showChapter('chapter-2')">第二章：艺术密码——秦腔的魅力何在</li>
-                        <li onclick="showChapter('chapter-3')">第三章：名角风流——秦腔历史上的关键人物</li>
-                        <li onclick="showChapter('chapter-4')">第四章：戏台上下——秦腔的传承与创新</li>
-                        <li onclick="showChapter('chapter-5')">第五章：如何"入坑"秦腔？</li>
-                        <li onclick="showChapter('chapter-6')">尾声：秦腔的未来</li>
-                    </ol>
-                </div>
-                
-                <div style="margin-top: 40px; text-align: center;">
-                    <button class="nav-btn" onclick="showChapter('chapter-0')" style="font-size: 1.2em; padding: 15px 40px;">
-                        开始阅读 →
-                    </button>
-                </div>
+        <div class="china-border">
+            <h1 class="main-title">八百里秦川三千万子民</h1>
+            <p class="subtitle">秦腔深度研究报告</p>
+            
+            <div class="cover-image">
+                <div class="cover-image-text">聆听千古秦腔<br>感悟华夏根脉</div>
             </div>
+            
+            <div class="table-of-contents">
+                <h2>报告目录</h2>
+                <ol>
+                    <li><a href="chapter0.html">序章：从《主角》说开去</a></li>
+                    <li><a href="chapter1.html">第一章：千年文脉</a></li>
+                    <li><a href="chapter2.html">第二章：艺术密码</a></li>
+                    <li><a href="chapter3.html">第三章：名角风流</a></li>
+                    <li><a href="chapter4.html">第四章：戏台上下</a></li>
+                    <li><a href="chapter5.html">第五章：如何"入坑"秦腔？</a></li>
+                    <li><a href="chapter6.html">尾声：秦腔的未来</a></li>
+                </ol>
+            </div>
+            
+            <a href="chapter0.html" class="start-button">开始阅读 →</a>
         </div>
-        
-        <!-- 章节页面将通过JavaScript动态加载 -->
-        <div id="chapter-container"></div>
     </div>
-    
-    <script>
-        // 章节配置
-        const chapters = [
-            {
-                id: 'chapter-0',
-                title: '序章：从《主角》说开去',
-                subtitle: '当电视剧点燃秦腔热情',
-                file: '序章_从主角说开去.md'
-            },
-            {
-                id: 'chapter-1',
-                title: '第一章：千年文脉',
-                subtitle: '秦腔的历史长河',
-                file: '第一章_千年文脉_秦腔的历史长河.md'
-            },
-            {
-                id: 'chapter-2',
-                title: '第二章：艺术密码',
-                subtitle: '秦腔的魅力何在',
-                file: '第二章_艺术密码_秦腔的魅力何在.md'
-            },
-            {
-                id: 'chapter-3',
-                title: '第三章：名角风流',
-                subtitle: '秦腔历史上的关键人物',
-                file: '第三章_名角风流_秦腔历史上的关键人物.md'
-            },
-            {
-                id: 'chapter-4',
-                title: '第四章：戏台上下',
-                subtitle: '秦腔的传承与创新',
-                file: 'chapter4_qinqiang_inheritance_innovation.md'
-            },
-            {
-                id: 'chapter-5',
-                title: '第五章：如何"入坑"秦腔？',
-                subtitle: '新手完全指南',
-                file: '第五章_秦腔入门完全指南_修订版.md'
-            },
-            {
-                id: 'chapter-6',
-                title: '尾声：秦腔的未来',
-                subtitle: '守正与创新',
-                file: '尾声_秦腔的未来.md'
-            }
-        ];
-        
-        // 显示指定章节
-        async function showChapter(chapterId) {
-            // 隐藏首页
-            document.getElementById('home-page').style.display = 'none';
-            
-            // 查找章节配置
-            const chapter = chapters.find(c => c.id === chapterId);
-            if (!chapter) return;
-            
-            // 检查章节页面是否已存在
-            let chapterPage = document.getElementById(chapterId);
-            if (!chapterPage) {
-                // 创建章节页面
-                chapterPage = document.createElement('div');
-                chapterPage.id = chapterId;
-                chapterPage.className = 'chapter-page';
-                document.getElementById('chapter-container').appendChild(chapterPage);
-                
-                // 显示加载提示
-                chapterPage.innerHTML = '<div style="text-align: center; padding: 50px;">正在加载章节内容...</div>';
-                chapterPage.style.display = 'block';
-                
-                try {
-                    // 加载Markdown文件
-                    const response = await fetch(chapter.file);
-                    if (!response.ok) throw new Error('无法加载文件');
-                    const mdText = await response.text();
-                    
-                    // 转换为HTML
-                    const htmlContent = markdownToHtml(mdText, chapter);
-                    chapterPage.innerHTML = htmlContent;
-                    
-                    // 添加图文混排
-                    addImagesToChapter(chapterPage, chapterId);
-                    
-                } catch (error) {
-                    chapterPage.innerHTML = `
-                        <div style="text-align: center; padding: 50px;">
-                            <h2>加载失败</h2>
-                            <p>无法加载文件: ${chapter.file}</p>
-                            <p>错误信息: ${error.message}</p>
-                            <button class="nav-btn" onclick="showHome()" style="margin-top: 20px;">
-                                返回首页
-                            </button>
-                        </div>
-                    `;
-                }
-            } else {
-                // 显示已存在的章节页面
-                chapterPage.style.display = 'block';
-            }
-            
-            // 隐藏其他章节页面
-            document.querySelectorAll('.chapter-page').forEach(page => {
-                if (page.id !== 'home-page' && page.id !== chapterId) {
-                    page.style.display = 'none';
-                }
-            });
-            
-            // 滚动到顶部
-            window.scrollTo(0, 0);
-        }
-        
-        // 显示首页
-        function showHome() {
-            document.querySelectorAll('.chapter-page').forEach(page => {
-                if (page.id !== 'home-page') {
-                    page.style.display = 'none';
-                }
-            });
-            document.getElementById('home-page').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-        
-        // 简单的Markdown到HTML转换器
-        function markdownToHtml(md, chapter) {
-            let html = '';
-            
-            // 添加章节头部
-            html += `
-                <div class="chapter-header">
-                    <h1>${chapter.title}</h1>
-                    <p class="chapter-subtitle">${chapter.subtitle}</p>
-                </div>
-                <div class="chapter-content">
-            `;
-            
-            // 转换Markdown
-            const lines = md.split('\n');
-            let inList = false;
-            let listType = '';
-            
-            for (let i = 0; i < lines.length; i++) {
-                let line = lines[i];
-                
-                // 跳过空行
-                if (!line.trim()) {
-                    if (inList) {
-                        html += `</${listType}>`;
-                        inList = false;
-                    }
-                    html += '<p>&nbsp;</p>';
-                    continue;
-                }
-                
-                // 标题
-                if (line.startsWith('# ')) {
-                    if (inList) { html += `</${listType}>`; inList = false; }
-                    html += `<h2>${line.substring(2)}</h2>`;
-                } else if (line.startsWith('## ')) {
-                    if (inList) { html += `</${listType}>`; inList = false; }
-                    html += `<h3>${line.substring(3)}</h3>`;
-                } else if (line.startsWith('### ')) {
-                    if (inList) { html += `</${listType}>`; inList = false; }
-                    html += `<h4>${line.substring(4)}</h4>`;
-                }
-                // 分隔线
-                else if (line.trim() === '---') {
-                    if (inList) { html += `</${listType}>`; inList = false; }
-                    html += '<hr>';
-                }
-                // 无序列表
-                else if (line.trim().startsWith('- ')) {
-                    if (!inList || listType !== 'ul') {
-                        if (inList) html += `</${listType}>`;
-                        html += '<ul>';
-                        inList = true;
-                        listType = 'ul';
-                    }
-                    html += `<li>${line.trim().substring(2)}</li>`;
-                }
-                // 有序列表
-                else if (/^\d+\.\s/.test(line.trim())) {
-                    if (!inList || listType !== 'ol') {
-                        if (inList) html += `</${listType}>`;
-                        html += '<ol>';
-                        inList = true;
-                        listType = 'ol';
-                    }
-                    html += `<li>${line.trim().replace(/^\d+\.\s/, '')}</li>`;
-                }
-                // 普通段落
-                else {
-                    if (inList) { html += `</${listType}>`; inList = false; }
-                    
-                    // 处理粗体
-                    line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-                    
-                    // 处理链接
-                    line = line.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>');
-                    
-                    html += `<p>${line}</p>`;
-                }
-            }
-            
-            if (inList) html += `</${listType}>`;
-            
-            html += '</div>';
-            
-            // 添加导航按钮
-            const currentIndex = chapters.findIndex(c => c.id === chapter.id);
-            html += `
-                <div class="nav-buttons">
-                    <button class="nav-btn home" onclick="showHome()">
-                        ← 返回首页
-                    </button>
-                    ${currentIndex > 0 ? 
-                        `<button class="nav-btn" onclick="showChapter('${chapters[currentIndex - 1].id}')">
-                            ← 上一章：${chapters[currentIndex - 1].title.replace(/^第.+?[：:]/, '')}
-                        </button>` 
-                        : ''
-                    }
-                    ${currentIndex < chapters.length - 1 ? 
-                        `<button class="nav-btn" onclick="showChapter('${chapters[currentIndex + 1].id}')">
-                            下一章：${chapters[currentIndex + 1].title.replace(/^第.+?[：:]/, '')} →
-                        </button>` 
-                        : ''
-                    }
-                </div>
-            `;
-            
-            return html;
-        }
-        
-        // 添加图片到章节（图文混排）
-        function addImagesToChapter(chapterPage, chapterId) {
-            // 为每个章节预定义一些图片（使用稳定的URL或本地图片）
-            const chapterImages = {
-                'chapter-0': [
-                    {
-                        url: 'https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/0ef21124570f6700c9955978?fr=lemma&fromModule=lemma_content-image',
-                        caption: '秦腔艺术（来源：百度百科）',
-                        position: 2
-                    }
-                ],
-                'chapter-1': [
-                    {
-                        url: 'https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/95afee1ff9b193c6e1fe0b69?fr=lemma&fromModule=lemma_content-image',
-                        caption: '秦腔脸谱（来源：百度百科）',
-                        position: 1
-                    }
-                ],
-                'chapter-2': [
-                    {
-                        url: 'https://baike.baidu.com/pic/%E6%9D%BF%E8%83%A1/344055/0/64380cd7912397dd2925739c5c82b2b7d1a287ce?fr=lemma&fromModule=lemma_content-image',
-                        caption: '板胡（秦腔主要伴奏乐器）',
-                        position: 1
-                    }
-                ],
-                'chapter-3': [
-                    {
-                        url: 'https://baike.baidu.com/pic/%E9%AD%8F%E9%95%BF%E7%94%9F/10147451/0/0ef21124570f6700c9955978?fr=lemma&fromModule=lemma_content-image',
-                        caption: '魏长生（秦腔艺术大师）',
-                        position: 1
-                    }
-                ],
-                'chapter-4': [
-                    {
-                        url: 'https://baike.baidu.com/pic/%E7%A7%A6%E8%85%94/596/0/3b6833f55dec5f7bbc3109d6?fr=lemma&fromModule=lemma_content-image',
-                        caption: '秦腔表演（来源：百度百科）',
-                        position: 1
-                    }
-                ]
-            };
-            
-            const images = chapterImages[chapterId];
-            if (!images) return;
-            
-            // 在指定位置插入图片
-            images.forEach(img => {
-                const contentDiv = chapterPage.querySelector('.chapter-content');
-                if (!contentDiv) return;
-                
-                const paragraphs = contentDiv.querySelectorAll('p, h2, h3');
-                if (paragraphs.length > img.position) {
-                    const targetElement = paragraphs[img.position];
-                    const imgDiv = document.createElement('div');
-                    imgDiv.className = 'image-container';
-                    imgDiv.innerHTML = `
-                        <img src="${img.url}" alt="${img.caption}" onerror="this.style.display='none'">
-                        <div class="image-caption">${img.caption}</div>
-                    `;
-                    
-                    // 插入图片
-                    targetElement.parentNode.insertBefore(imgDiv, targetElement);
-                }
-            });
-        }
-        
-        // 页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('秦腔深度研究报告加载完成');
-        });
-    </script>
 </body>
 </html>
